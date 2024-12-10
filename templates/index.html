@@ -1,0 +1,837 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <section class="home-slider position-relative mb-30">
+            <div class="container">
+                <div class="home-slide-cover bg-grey-9 mt-30">
+                    <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                        <div class="single-hero-slider single-animation-wrap">
+                            <div class="container">
+                                <div class="row align-items-center slider-animated-1">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="hero-slider-content-2">
+                                            <h4 class="animated">Trade-In Offer</h4>
+                                            <h2 class="animated fw-900">Supper Value Deals</h2>
+                                            <h1 class="animated fw-900 text-brand">On All Products</h1>
+                                            <p class="animated">Save more with coupons & up to 70% off</p>
+                                            <a class="animated btn btn-default btn-rounded" href="{% url 'shop' %}"> SHOP NOW <i class="fa fa-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6">
+                                        <div class="single-slider-img single-slider-img-1">
+                                            <img class="animated" src="{% static 'assets/imgs/slider/shop.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-hero-slider single-animation-wrap">
+                            <div class="container">
+                                <div class="row align-items-center slider-animated-1">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="hero-slider-content-2">
+                                            <h4 class="animated">Tech Promotions</h4>
+                                            <h2 class="animated fw-900">Tech Trending</h2>
+                                            <h1 class="animated fw-900 text-brand">Great Collection</h1>
+                                            <p class="animated">Save more with coupons & up to 20% off</p>
+                                            <a class="animated btn btn-default btn-rounded" href="{% url 'shop' %}"> DISCOVER NOW <i class="fa fa-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6">
+                                        <div class="single-slider-img single-slider-img-1">
+                                            <img class="animated" src="{% static 'assets/imgs/slider/tech.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-hero-slider single-animation-wrap">
+                            <div class="container">
+                                <div class="row align-items-center slider-animated-1">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="hero-slider-content-2">
+                                            <h4 class="animated">Upcoming Offer</h4>
+                                            <h2 class="animated fw-900">Big Deals From</h2>
+                                            <h1 class="animated fw-900 text-brand">Manufacturer</h1>
+                                            <p class="animated">Headphone, Gaming Laptop, PC and more...</p>
+                                            <a class="animated btn btn-default btn-rounded" href="{% url 'shop' %}"> SHOP NOW <i class="fa fa-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-6">
+                                        <div class="single-slider-img single-slider-img-1">
+                                            <img class="animated" src="{% static 'assets/imgs/slider/airpods.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-arrow hero-slider-1-arrow"></div>
+                </div>
+            </div>
+        </section>
+        <section class="featured pb-30 pt-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-md-3 mb-lg-0">
+                        <div class="banner-left-icon style-2 d-flex align-items-center wow fadeIn animated">
+                            <div class="banner-icon">
+                                <img src="{% static 'assets/imgs/theme/icons/icon-truck.svg' %}" alt="">
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Free Shipping</h3>
+                                <p>Orders $50 or more</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+                        <div class="banner-left-icon style-2 d-flex align-items-center wow fadeIn animated">
+                            <div class="banner-icon">
+                                <img src="{% static 'assets/imgs/theme/icons/icon-purchase.svg' %}" alt="">
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Free Returns</h3>
+                                <p>Within 30 days</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="banner-left-icon style-2 d-flex align-items-center wow fadeIn animated">
+                            <div class="banner-icon">
+                                <img src="{% static 'assets/imgs/theme/icons/icon-bag.svg' %}" alt="">
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Get 20% Off 1 Item</h3>
+                                <p>When you sign up</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="banner-left-icon style-2 d-flex align-items-center wow fadeIn animated mb-sm-0">
+                            <div class="banner-icon">
+                                <img src="{% static 'assets/imgs/theme/icons/icon-operator.svg' %}" alt="">
+                            </div>
+                            <div class="banner-text">
+                                <h3 class="icon-box-title">Support Center</h3>
+                                <p>24/7 amazing services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="product-tabs pb-30 wow fadeIn animated">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
+                    </li>
+                </ul>
+                <!--End nav-tabs-->
+                <div class="tab-content wow fadeIn animated" id="myTabContent">
+                    <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+                        <div class="row product-grid-4">
+                            {% for product in featured_products %}
+                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{{ product.get_detail_url }}">
+                                                <img class="default-img" src="{{ product.default_img.image.url }}" alt="">
+                                                <img class="hover-img" src="{{ product.hover_img.image.url }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            {% if product.status|lower != 'none' %}
+                                            <span class="hot">{{ product.status }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'shop' %}">{{ product.get_last_ctg.name }}</a>
+                                        </div>
+                                        <h2><a href="{% url 'shop' %}">{{ product.name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span>
+                                                <span>90%</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-price">
+                                            {% if product.percentage %}
+                                            <span>{{ product.get_discaunt_price }} so'm</span>
+                                            <span class="old-price">{{ product.get_cheap_price.price }} so'm</span>
+                                            {% else %}
+                                            <span>{{ product.get_cheap_price.price }} so'm</span>
+                                            {% endif %}   
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--End product-grid-4-->
+                    </div>
+                    <!--En tab one (Featured)-->
+                    <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
+                        <div class="row product-grid-4">
+                            {% for pop_product in popular_products %}
+                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{% url 'shop' %}">
+                                                <img class="default-img" src="{{ pop_product.default_img.image.url }}" alt="">
+                                                <img class="hover-img" src="{{ pop_product.hover_img.image.url }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            {% if pop_product.status|lower != 'none' %}
+                                            <span class="hot">{{ pop_product.status }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'shop' %}">{{ pop_product.get_last_ctg.name }}</a>
+                                        </div>
+                                        <h2><a href="{% url 'shop' %}">{{ pop_product.name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span>
+                                                <span>90%</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-price">
+                                            {% if pop_product.percentage %}
+                                            <span>{{ pop_product.get_discaunt_price }} so'm</span>
+                                            <span class="old-price">{{ pop_product.get_cheap_price.price }} so'm</span>
+                                            {% else %}
+                                            <span class="old-price">{{ pop_product.get_cheap_price.price }} so'm</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--End product-grid-4-->
+                    </div>
+                    <!--En tab two (Popular)-->
+                    <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
+                        <div class="row product-grid-4">
+                            {% for new_add_product in new_added_products %}
+                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{% url 'shop' %}">
+                                                <img class="default-img" src="{{ new_add_product.default_img.image.url }}" alt="">
+                                                <img class="hover-img" src="{{ new_add_product.hover_img.image.url }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            {% if new_add_product.status|lower != 'none' %}
+                                            <span class="hot">{{ new_add_product.status }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'shop' %}">{{ new_add_product.get_last_ctg.name }}</a>
+                                        </div>
+                                        <h2><a href="{% url 'shop' %}">{{ new_add_product.name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span>
+                                                <span>90%</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-price">
+                                            {% if new_add_product.percentage %}
+                                            <span>{{ new_add_product.get_discaunt_price }} so'm </span>
+                                            <span class="old-price">{{ new_add_product.get_cheap_price.price }} so'm</span>
+                                            {% else %}
+                                            <span class="old-price">{{ new_add_product.get_cheap_price.price }} so'm</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--End product-grid-4-->
+                    </div>
+                    <!--En tab three (New added)-->
+                </div>
+                <!--End tab-content-->
+            </div>
+        </section>
+        <section class="popular-categories bg-grey-9 pt-30 pb-30">
+            <div class="container wow fadeIn animated">
+                <h3 class="section-title mb-30">Popular Categories</h3>
+                <div class="carausel-6-columns-cover position-relative">
+                    <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
+                    <div class="carausel-6-columns" id="carausel-6-columns">
+                        {% for ctg in categories %}
+                        <div class="card-1 border-radius-10 hover-up p-30">
+                            <figure class="mb-30 img-hover-scale overflow-hidden">
+                                <img src="{{ ctg.image.url }}" width="100" height="100" alt="">
+                            </figure>
+                            <h5><a href="{% url 'shop' %}">{{ ctg.name }}</a></h5>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="banners pt-30 pb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="banner-img wow fadeIn animated">
+                            <img class="border-radius-10" src="{% static 'assets/imgs/banner/phone.jpg' %}" alt="">
+                            <div class="banner-text">
+                                <span>Smart Offer</span>
+                                <h4>Save 20% on <br>iPhone 12</h4>
+                                <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="banner-img wow fadeIn animated">
+                            <img class="border-radius-10" src="{% static 'assets/imgs/banner/camera.jpg' %}" alt="">
+                            <div class="banner-text">
+                                <span>Sale off</span>
+                                <h4>Great Camera <br>Collection</h4>
+                                <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-md-none d-lg-flex">
+                        <div class="banner-img wow fadeIn animated  mb-sm-0">
+                            <img class="border-radius-10" src="{% static 'assets/imgs/banner/device.jpg' %}" alt="">
+                            <div class="banner-text">
+                                <span>New Arrivals</span>
+                                <h4>Shop Today’s <br>Deals & Offers</h4>
+                                <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="banner-2">
+            <div class="container">
+                <div class="banner-img banner-big wow fadeIn animated f-none">
+                    <img src="{% static 'assets/imgs/banner/apple.jpg' %}" alt="">
+                    <div class="banner-text">
+                        <h4 class="mb-15 mt-40 text-white">Repair Services</h4>
+                        <h2 class="fw-600 mb-20 text-white">We're an Apple <br>Authorised Service Provider</h2>
+                        <a href="{% url 'guide' %}" class="btn">Learn More <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pt-30 pb-30">
+            <div class="container wow fadeIn animated">
+                <h3 class="section-title style-1 mb-30">New Arrivals</h3>
+                <div class="carausel-6-columns-cover arrow-center position-relative">
+                    <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-2-arrows"></div>
+                    <div class="carausel-6-columns carausel-arrow-center" id="carausel-6-columns-2">
+                        {% for news_arivals in new_arrivals_products %}
+                        <div class="product-cart-wrap small hover-up">
+                            <div class="product-img-action-wrap">
+                                <div class="product-img product-img-zoom">
+                                    <a href="{% url 'shop' %}">
+                                        <img class="default-img" src="{{ news_arivals.default_img.image.url }}" alt="">
+                                        <img class="hover-img" src="{{ news_arivals.hover_img.image.url }}" alt="">
+                                    </a>
+                                </div>
+                                <div class="product-action-1">
+                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="{% url 'wishlist-all' %}" tabindex="0"><i class="far fa-heart"></i></a>
+                                    <a aria-label="Compare" class="action-btn small hover-up" href="{{ product.get_url }}" tabindex="0"><i class="far fa-exchange-alt"></i></a>
+                                </div>
+                                <div class="product-badges product-badges-position product-badges-mrg">
+                                    {% if news_arivals.status|lower != 'none' %}
+                                    <span class="hot"> {{ news_arivals.status }} </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="product-content-wrap">
+                                <h2><a href="{% url 'shop' %}"> {{ news_arivals.name }} </a></h2>
+                                <div class="rating-result" title="90%">
+                                    <span>
+                                    </span>
+                                </div>
+                                <div class="product-price">
+                                    {% if news_arivals.percentage %}
+                                    <span>{{ news_arivals.get_discaunt_price }} so'm</span>
+                                    <span class="old-price">{{ news_arivals.get_cheap_price.price }} so'm</span>
+                                    {% else %}
+                                    <span class="old-price">{{ news_arivals.get_cheap_price.price }} so'm</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="deals">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 deal-co">
+                        <div class="deal wow fadeIn animated mb-md-4 mb-sm-4 mb-lg-0" style="background-image: url('{% static 'assets/imgs/banner/naushnik.jpg' %}');">
+                            <div class="deal-top">
+                                <h2 class="text-brand">Deal of the Day.</h2>
+                                <h5>Limited quantities.</h5>
+                            </div>
+                            <div class="deal-content">
+                                <h6 class="product-title"><a href="{% url 'shop' %}">Smart Headphone New Morden Design</a></h6>
+                                <div class="product-price"><span class="new-price">$139.00</span><span class="old-price">$160.99</span></div>
+                            </div>
+                            <div class="deal-bottom">
+                                <p>Hurry Up! Offer End In:</p>
+                                <div class="deals-countdown" data-countdown="2025/03/25 00:00:00"></div>
+                                <a href="{% url 'shop' %}" class="btn hover-up">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 deal-co">
+                        <div class="deal wow fadeIn animated" style="background-image: url('{% static 'assets/imgs/banner/vivobook.jpg' %}');">
+                            <div class="deal-top">
+                                <h2 class="text-success">Gadgets & Accessories</h2>
+                                <h5>Computers & Laptop</h5>
+                            </div>
+                            <div class="deal-content">
+                                <h6 class="product-title"><a href="{% url 'shop' %}">Apple In-Ear Headphones with Remote and Mic</a></h6>
+                                <div class="product-price"><span class="new-price">$178.00</span><span class="old-price">$256.99</span></div>
+                            </div>
+                            <div class="deal-bottom">
+                                <p>Hurry Up! Offer End In:</p>
+                                <div class="deals-countdown" data-countdown="2026/11/17 11:27:00"></div>
+                                <a href="{% url 'shop' %}" class="btn hover-up">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pt-30 pb-30">
+            <div class="container">
+                <h3 class="section-title style-1 mb-30 wow fadeIn animated">Featured Brands</h3>
+                <div class="carausel-6-columns-cover arrow-center position-relative wow fadeIn animated">
+                    <div class="slider-arrow slider-arrow-3 carausel-6-columns-arrow" id="carausel-6-columns-3-arrows"></div>
+                    <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
+                        {% for featured_brands in brand %}
+                        <div class="brand-logo">
+                            <img class="img-grey-hover" src="{{ featured_brands.icon.url }}" alt="">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-grey-9 pt-30 pb-30">
+            <div class="container">
+                <div class="heading-tab d-flex">
+                    <div class="heading-tab-left wow fadeIn animated">
+                        <h3 class="section-title mb-35">Monthly Best Sell</h3>
+                    </div>
+                    <div class="heading-tab-right wow fadeIn animated">
+                        <ul class="nav nav-tabs right no-border" id="myTab-1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9 col-md-12">
+                        <div class="tab-content wow fadeIn animated" id="myTabContent-1">
+                            <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel" aria-labelledby="tab-one-1">
+                                <div class="carausel-4-columns-cover arrow-center position-relative">
+                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
+                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                                        {% for products in featured_products %}
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{% url 'shop' %}">
+                                                        <img class="default-img" src="{{ products.default_img.image.url }}" alt="">
+                                                        <img class="hover-img" src="{{ products.hover_img.image.url }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                                    <a aria-label="Compare" class="action-btn small hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    {% if products.status|lower != 'none' %}
+                                                    <span class="hot">{{ products.status }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="{% url 'shop' %}">{{ products.get_last_ctg.name }}</a>
+                                                </div>
+                                                <h2><a href="{% url 'shop' %}">{{ products.name }}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                        <span>70%</span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    {% if products.percentage %}
+                                                    <span>{{ products.get_discaunt_price }} so'm</span>
+                                                    <span class="old-price">{{ products.get_cheap_price.price }} so'm</span>
+                                                    {% else %}
+                                                    <span class="old-price">{{ products.get_cheap_price.price }} so'm</span>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-action-1 show">
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End tab-pane-->
+                            <div class="tab-pane fade" id="tab-two-1" role="tabpanel" aria-labelledby="tab-two-1">
+                                <div class="carausel-4-columns-cover arrow-center position-relative">
+                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-2-arrows"></div>
+                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns-2">
+                                        {% for pop_products in popular_products %}
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{% url 'shop' %}">
+                                                        <img class="default-img" src="{{ pop_products.default_img.image.url }}" alt="">
+                                                        <img class="hover-img" src="{{ pop_products.hover_img.image.url }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                                    <a aria-label="Compare" class="action-btn small hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    {% if pop_products.status|lower != 'none' %}
+                                                    <span class="hot">{{ pop_products.status }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="{% url 'shop' %}">{{ pop_products.get_last_ctg.name }}</a>
+                                                </div>
+                                                <h2><a href="{% url 'shop' %}">{{ pop_products.name }}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                        <span>70%</span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    {% if pop_products.percentage %}
+                                                    <span>{{ pop_products.get_discaunt_price }} so'm</span>
+                                                    <span class="old-price">{{ pop_products.get_cheap_price.price }} so'm</span>
+                                                    {% else %}
+                                                    <span class="old-price">{{ pop_products.get_cheap_price.price }} so'm</span>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-action-1 show">
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-three-1" role="tabpanel" aria-labelledby="tab-three-1">
+                                <div class="carausel-4-columns-cover arrow-center position-relative">
+                                    <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-3-arrows"></div>
+                                    <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns-3">
+                                        {% for new_adds_products in new_added_products %}
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{% url 'shop' %}">
+                                                        <img class="default-img" src="{{ new_adds_products.default_img.image.url }}" alt="">
+                                                        <img class="hover-img" src="{{ new_adds_products.hover_img.image.url }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                                    <a aria-label="Compare" class="action-btn small hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    {% if new_adds_products.status|lower != 'none' %}
+                                                    <span class="hot">{{ new_adds_products.status }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="{% url 'shop' %}">{{ new_adds_products.get_last_ctg.name }}</a>
+                                                </div>
+                                                <h2><a href="{% url 'shop' %}">{{ new_adds_products.name }}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                        <span>70%</span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    {% if new_adds_products.percentage %}
+                                                    <span>{{ new_adds_products.get_discaunt_price }} so'm</span>
+                                                    <span class="old-price">{{ new_adds_products.get_cheap_price.price }} so'm</span>
+                                                    {% else %}
+                                                    <span class="old-price">{{ new_adds_products.get_cheap_price.price }} so'm</span>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-action-1 show">
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End tab-content-->
+                    </div>
+                    <!--End Col-lg-9-->
+                </div>
+            </div>
+        </section>
+        <section class="pt-30 pb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="section-title style-1 mb-30 wow fadeIn animated">News & Trending</h3>
+                        <div class="post-list mb-4 mb-lg-0">
+                            <article class="wow fadeIn animated">
+                                <div class="d-md-flex d-block">
+                                    <div class="post-thumb d-flex mr-15 border-radius-10">
+                                        <a class="color-white" href="{% url 'blog' %}">
+                                            <img class="border-radius-10" src="{% static 'assets/imgs/blog/tech.jpg' %}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-content">
+                                        <div class="entry-meta mb-5 mt-10">
+                                            <a class="entry-meta meta-2" href="{% url 'blog' %}"><span class="post-in text-danger font-x-small text-uppercase">Tech</span></a>
+                                        </div>
+                                        <h4 class="post-title mb-25 text-limit-2-row">
+                                            <a href="{% url 'blog' %}">Rivojlangan texnologiya</a>
+                                        </h4>
+                                        <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
+                                            <div>
+                                                <span class="post-on"> <i class="far fa-clock"></i> 12/11/2024</span>
+                                            </div>
+                                            <a href="{% url 'blog' %}">Read more <i class="fa fa-arrow-right font-xxs ml-5"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="wow fadeIn animated">
+                                <div class="d-md-flex d-block">
+                                    <div class="post-thumb d-flex mr-15 border-radius-10">
+                                        <a class="color-white" href="{% url 'blog' %}">
+                                            <img class="border-radius-10" src="{% static 'assets/imgs/blog/test.jpg' %}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-content">
+                                        <div class="entry-meta mb-5 mt-10">
+                                            <a class="entry-meta meta-2" href="{% url 'blog' %}"><span class="post-in text-info font-x-small text-uppercase">Telecom</span></a>
+                                        </div>
+                                        <h4 class="post-title mb-25 text-limit-2-row">
+                                            <a href="{% url 'blog' %}">Telecom tezligi</a>
+                                        </h4>
+                                        <div class="entry-meta meta-1 font-xs color-grey mt-10 pb-10">
+                                            <div>
+                                                <span class="post-on"><i class="far fa-clock"></i> 12/11/2024</span>
+                                            </div>
+                                            <a href="{% url 'blog' %}">Read more <i class="fa fa-arrow-right font-xxs ml-5"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="banner-img banner-1 wow fadeIn animated">
+                                    <img class="border-radius-10" src="{% static 'assets/imgs/banner/vivobook.jpg' %}" alt="">
+                                    <div class="banner-text">
+                                        <span>Gaming Area</span>
+                                        <h4>Save 17% on <br>Asus Laptop</h4>
+                                        <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="banner-img mb-15 wow fadeIn animated">
+                                    <img class="border-radius-10" src="{% static 'assets/imgs/banner/phone.jpg' %}" alt="">
+                                    <div class="banner-text">
+                                        <span>Smart Offer</span>
+                                        <h4>Save 20% on <br>iPhone 12</h4>
+                                        <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="banner-img banner-2 wow fadeIn animated">
+                                    <img class="border-radius-10" src="{% static 'assets/imgs/banner/phone.jpg' %}" alt="">
+                                    <div class="banner-text">
+                                        <span>Smart Offer</span>
+                                        <h4>Save 20% on <br>iPhone 12</h4>
+                                        <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-30">
+            <div class="container">
+                <div class="banner-bg wow fadeIn animated" style="background-image: url('{% static 'assets/imgs/banner/tourist.jpg' %}')">
+                    <div class="banner-content">
+                        <h5 class="text-grey-4 mb-15">Shop Today’s Deals</h5>
+                        <h3 class="fw-600">Specialized storage for tourism</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                        <div class="banner-img wow fadeIn animated mb-md-4 mb-lg-0">
+                            <img class="border-radius-10" src="{% static 'assets/imgs/banner/naushnik.jpg' %}" alt="">
+                            <div class="banner-text">
+                                <span>Music Zone</span>
+                                <h4>Save 17% on <br>Headphone</h4>
+                                <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                        <h4 class="section-title style-1 mb-30 wow fadeIn animated">Deals & Outlet</h4>
+                        <div class="product-list-small wow fadeIn animated">
+                            {% for deals in deals_products %}
+                            <article class="row align-items-center">
+                                <figure class="col-md-3 mb-0">
+                                    <a href="{% url 'shop' %}"><img src="{{ deals.default_img.image.url }}" alt=""></a>
+                                </figure>
+                                <div class="col-md-9 pl-0">
+                                    <h4 class="title-small">
+                                        <a href="{% url 'shop' %}">{{ deals.get_last_ctg.name }}</a>
+                                    </h4>
+                                    <div class="product-price">
+                                        {% if deals.percentage %}
+                                        <span>{{ deals.get_discaunt_price }} so'm</span>
+                                        <span class="old-price">{{ deals.get_cheap_price.price }} so'm</span>
+                                        {% else %}
+                                        <span class="old-price">{{ deals.get_cheap_price.price }} so'm</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
+                        <h4 class="section-title style-1 mb-30 wow fadeIn animated">Top Selling</h4>
+                        <div class="product-list-small wow fadeIn animated">
+                            {% for sell in top_selling_products %}
+                            <article class="row align-items-center">
+                                <figure class="col-md-3 mb-0">
+                                    <a href="{% url 'shop' %}"><img src="{{ sell.default_img.image.url }}" alt=""></a>
+                                </figure>
+                                <div class="col-md-9 pl-0">
+                                    <h4 class="title-small">
+                                        <a href="{% url 'shop' %}">{{ sell.get_last_ctg.name }}</a>
+                                    </h4>
+                                    <div class="product-price">
+                                        {% if sell.percentage %}
+                                        <span>{{ sell.get_discaunt_price }} so'm</span>
+                                        <span class="old-price">{{ sell.get_cheap_price.price }} so'm</span>
+                                        {% else %}
+                                        <span class="old-price">{{ sell.get_cheap_price.price }} so'm</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title style-1 mb-30 wow fadeIn animated">Hot Releases</h4>
+                        <div class="product-list-small wow fadeIn animated">
+                            {% for hots in hot_products %}
+                            <article class="row align-items-center">
+                                <figure class="col-md-3 mb-0">
+                                    <a href="{% url 'shop' %}"><img src="{{ hots.default_img.image.url }}" alt=""></a>
+                                </figure>
+                                <div class="col-md-9 pl-0">
+                                    <h4 class="title-small">
+                                        <a href="{% url 'shop' %}">{{ hots.get_last_ctg.name }}</a>
+                                    </h4>
+                                    <div class="product-price">
+                                        {% if hots.percentage %}
+                                        <span>{{ hots.get_discaunt_price }} so'm</span>
+                                        <span class="old-price">{{ hots.get_cheap_price.price }} so'm</span>
+                                        {% else %}
+                                        <span class="old-price">{{ hots.get_cheap_price.price }} so'm</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+{% endblock content %}

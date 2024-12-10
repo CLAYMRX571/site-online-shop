@@ -1,0 +1,87 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Compare
+                </div>
+            </div>
+        </div>
+        <section class="mt-50 mb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table">
+                            {% for product in related_products %}
+                            <table class="table text-center">
+                                <tbody>
+                                    <tr class="pr_image">
+                                        <td class="text-muted font-md fw-600">Preview</td>
+                                        <td class="row_img"><img src="{{ product.default_img.image.url }}" width="100" height="100" alt="compare-img"></td>
+                                    </tr><br>
+                                    <tr class="pr_title">
+                                        <td class="text-muted font-md fw-600">Name</td>
+                                        <td class="product_name">
+                                            <h5><a href="{% url 'shop' %}">{{ product.name }}</a></h5>
+                                        </td>
+                                    </tr>
+                                    <tr class="pr_price">
+                                        <td class="text-muted font-md fw-600">Price</td>
+                                        <td class="product_price"><span class="price">{{ product.get_cheap_price.price }} so'm </span></td>
+                                    </tr>
+                                    <tr class="description">
+                                        <td class="text-muted font-md fw-600">Description</td>
+                                        <td class="row_text font-xs">
+                                            <p>{{ product.description }}</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="pr_color">
+                                        <td class="text-muted font-md fw-600">Color</td>
+                                        <td class="row_color">
+                                            <ul class="list-filter color-filter">
+                                                {% for color in product.get_colors %}
+                                                <li {% if color.color__id == active_color.id %} class="active" {% endif %}>
+                                                    {% csrf_token %}
+                                                    <a href="{% url 'compare' slug=product.slug size=active_size.id color=color.color__id %}">
+                                                        <span class="product-color" style="background-color: {{ color.color__code }};"></span>
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="pr_size">
+                                        <td class="text-muted font-md fw-600">Sizes Available</td>
+                                        <td class="row_size">
+                                            <ul class="list-filter size-filter mt-15 font-small">
+                                                {% for size in product.get_sizes %}
+                                                <li {% if size.size__id == active_size.size.id %} class="active" {% endif %}><a href="#">{{ size.size__name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <td class="action" data-title="Remove">Remove</td>
+                                    <td>
+                                        <form method="post" action="{% url 'delete' product.pk %}">
+                                            {% csrf_token %}
+                                            <button  type="submit">
+                                                <i class="fa fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tbody>
+                            </table>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

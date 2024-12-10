@@ -1,0 +1,205 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> 
+                    <a href="{% url 'shop' %}" rel="nofollow">
+                        Shop
+                    </a>
+                    <span></span> 
+                    {% if active_category %}
+                    {{ active_category.name }}
+                    {% else %}
+                    All
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="shop-product-fillter">
+                            <div class="totall-product">
+                                <p> We found <strong class="text-brand"> {{ page_obj.paginator.count }} </strong> items for you!</p>
+                            </div>
+                        </div>
+                        <div class="row product-grid-3">
+                            {% for product in page_obj %}
+                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{{ product.get_detail_url }}">
+                                                <img class="default-img" src="{{ product.default_img.image.url  }}" alt="">
+                                                <img class="hover-img" src="{{ product.hover_img.image.url  }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            {% if product.status|lower != 'none' %}
+                                            <span class="hot">{{ product.status }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'shop' %}">{{ product.get_last_ctg.name }}</a>
+                                        </div>
+                                        <h2><a href="{{ product.get_detail_url }}">{{ product.name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span>
+                                                <span>90%</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-price">
+                                            {% if product.percentage %}
+                                            <span>{{ product.get_discaunt_price }} so'm</span>
+                                            <span class="old-price">{{ product.get_cheap_price.price }} so'm</span>
+                                            {% else %}
+                                            <span>{{ product.get_cheap_price.price }} so'm</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--pagination-->
+                        <div class="pagination-area mt-15 mb-md-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?category={{ active_category.id }}&page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                    {% endif %}
+                                    <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+                                    {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?category={{ active_category.id }}&page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-area">
+                            <!--Widget categories-->
+                            <div class="sidebar-widget widget_categories mb-30 p-30 bg-grey border-radius-10">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title mb-10">Categories</h5>
+                                    <div class="bt-1 border-color-1"></div>
+                                </div>
+                                <div class="">
+                                    {% for ctg in categories %}
+                                    <ul class="categor-list">
+                                        <li class="cat-item text-muted"><a href="/shop?category={{ctg.id}}">{{ ctg.name }}</a>{{ ctg.products.count }}</li>
+                                    </ul>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- Fillter By Price -->
+                            <div class="sidebar-widget price_range range mb-30">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title mb-10">Fill by price</h5>
+                                    <div class="bt-1 border-color-1"></div>
+                                </div>
+                                <div class="price-filter">
+                                    <div class="price-filter-inner">
+                                        <div id="slider-range"></div>
+                                        <div class="price_slider_amount">
+                                            <div class="label-input">
+                                                <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group">
+                                    <div class="list-group-item mb-10 mt-10">
+                                        <label class="fw-900">Status</label>
+                                        <form action="{% url 'shop' %}" method="get">
+                                            {% csrf_token %}
+                                            <div class="custome-checkbox">
+                                                <input type="hidden" name="category" value="{{ active_category.id }}">
+                                                <input type="checkbox" name="status" value="none">
+                                                <label for="exampleCheckbox1">None</label>
+                                                <br>
+                                                <input type="checkbox" name="status" value="new">
+                                                <label for="exampleCheckbox2">New</label>
+                                                <br>
+                                                <input type="checkbox" name="status" value="hot">
+                                                <label for="exampleCheckbox3">Hot</label>
+                                                <br>
+                                                <input type="checkbox" name="status" value="best">
+                                                <label for="exampleCheckbox4">Best Sale</label>
+                                            </div>
+                                        <button type="submit"><i class="fa fa-filter mr-5 ml-0" href="{% url 'filter' %}"></i> Filter </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product sidebar Widget -->
+                            <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title mb-10">New products</h5>
+                                    <div class="bt-1 border-color-1"></div>
+                                </div>
+                                {% for bestes in page_obj %}
+                                <div class="single-post clearfix">
+                                    <div class="image">
+                                        <img src="{{ bestes.default_img.image_url }}" alt="">
+                                    </div>
+                                    <div class="content pt-10">
+                                        <h5><a href="{% url 'shop' %}">{{ bestes.name }}</a></h5>
+                                        {% if bestes.percentage %}
+                                        <p class="price mb-0 mt-5">{{ bestes.get_cheap_price.price }} so'm</p>
+                                        {% endif %}
+                                        <div class="product-rate">
+                                            <div class="product-rating" style="width:90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <!--Widget ads-->
+                            <div class="sidebar-widget widget-ads mb-30">
+                                <div class="banner-img banner-1 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
+                                    <img class="border-radius-10" src="{% static 'assets/imgs/banner/vivobook.jpg' %}" alt="">
+                                    <div class="banner-text">
+                                        <span>Gaming Area</span>
+                                        <h4>Save 17% on <br>Asus Laptop</h4>
+                                        <a href="{% url 'shop' %}">Shop Now <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Widget categories-->
+                            <div class="sidebar-widget widget_categories mb-50 p-30 bg-grey border-radius-10">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title mb-10">Manufacturers</h5>
+                                    <div class="bt-1 border-color-1"></div>
+                                </div>
+                                <div class="">
+                                    <ul class="categor-list">
+                                        {% for brand in brand %}
+                                        <li class="cat-item text-muted"><a href="{% url 'shop' %}">{{ brand.name }}</a>{{ brand.products.count }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

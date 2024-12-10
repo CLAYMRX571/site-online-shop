@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="main page-404">
+    <div class="row align-items-center height-50vh text-center">
+        <div class="col-lg-4 m-auto"><br>
+            <img src="{% static 'assets/imgs/theme/404.gif' %}" alt=""><br>
+            <a class="btn btn-default submit-auto-width font-xs hover-up" href="{% url 'index' %}">Back To Home Page</a>
+        </div>
+    </div>
+</main>
+    
+{% endblock content %}

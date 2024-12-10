@@ -1,0 +1,231 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> {{ product.get_last_ctg.name }}
+                    <span></span> {{ product.name }}
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product-detail accordion-detail">
+                            <div class="row mb-50">
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="detail-gallery">
+                                        <span class="zoom-icon"><i class="fa fa-search-plus"></i></span>
+                                        <!-- MAIN SLIDES -->
+                                        <div class="product-image-slider">
+                                            {% for image in active_images %}
+                                            <figure class="border-radius-10">
+                                                <img src="{{ image.image_url }}" alt="product image">
+                                            </figure>
+                                            {% endfor %}
+                                        </div>
+                                        <!-- THUMBNAILS -->
+                                        <div class="slider-nav-thumbnails pl-15 pr-15">
+                                            {% for image in active_images %}
+                                            <div><img src="{{ image.image_url }}" alt="product image"></div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <!-- End Gallery -->
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="detail-info">
+                                        <h2 class="title-detail">{{ product.name }}</h2>
+                                        <div class="product-detail-rating">
+                                            <div class="pro-details-brand">
+                                                <span> Brands: <a href="">{{ product.brand.name }}</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix product-price-cover">
+                                            <div class="product-price primary-color float-left">
+                                                {% if product.percentage %}
+                                                <ins><span class="text-brand">{{ product.get_discaunt_price }} so'm</span></ins>
+                                                <ins><span class="old-price font-md ml-15">{{ active_size.price }} so'm</span></ins>
+                                                <span class="save-price  font-md color3 ml-15">{{ product.percentage }}% off</span>
+                                                {% else %}
+                                                <ins><span class="text-brand">{{ active_size.price }} so'm</span></ins>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="bt-1 border-color-1 mt-15 mb-15"></div>
+                                        <div class="short-desc mb-30">
+                                            <p>{{ product.description }}</p>
+                                        </div>
+                                        <div class="attr-detail attr-color mb-15">
+                                            <strong class="mr-10">Color</strong>
+                                            <ul class="list-filter color-filter">
+                                                {% for color in product.get_colors %}
+                                                <li {% if color.color__id == active_color.id %} class="active" {% endif %}>
+                                                    {% csrf_token %}
+                                                    <a href="{% url 'detail' slug=product.slug size=active_size.id color=color.color__id %}">
+                                                        <span class="product-color" style="background-color: {{ color.color__code }};"></span>
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="attr-detail attr-size">
+                                            <strong class="mr-10">Size</strong>
+                                            <ul class="list-filter size-filter font-small">
+                                                {% for size in product.get_sizes %}
+                                                <li {% if size.size__id == active_size.size.id %} class="active" {% endif %}><a href="">{{ size.size__name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                        <div class="detail-extralink">
+                                            <form method="post" action="{% url 'order' %}">
+                                                {% csrf_token %}
+                                                <div class="">
+                                                    <input type="number" name="quantity" value='1'>
+                                                </div>
+                                                <div class="product-extra-link2">
+                                                    <input type="hidden" name="product_size" value="{{ active_size.id }}">
+                                                    <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist' %}?product={{product.id}}&size={{active_size.size.id}}&color={{active_color.id}}"><i class="far fa-heart"></i></a>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <ul class="product-meta font-xs color-grey mt-50">
+                                            <li class="mb-5">Tags: 
+                                                {% for tag in product.tags.all %}
+                                                <a href="">{{ tag.name }}</a>,
+                                                {% endfor %}
+                                            </li>
+                                            <li>Availability:<span class="in-stock text-success ml-5">{{ active_size.availability }} Items In Stock</span></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Detail Info -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-10 m-auto entry-main-content">
+                                    <h3 class="section-title style-1 mb-30">Description</h3>
+                                    <div class="description mb-50">
+                                        <p>{{ product.body }}</p>
+                                    </div>
+                                    <a class="mail-to-friend font-sm color-grey" target="_blank" href="https://mail.google.com/mail/u/0/#inbox?compose=new"><i class="far fa-envelope"></i> Email to a Friend</a>
+                                    <!--Comments-->
+                                    <div class="comments-area">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <h4 class="mb-30">Customer questions & answers</h4>
+                                                <div class="comment-list">
+                                                    {% for view in reviewes %}
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="{{ view.user.photo.url }}" alt="">
+                                                                <h6><a href="{{ view.get_detail_url }}">{{ view.user.full_name }}</a></h6>
+                                                            </div>  
+                                                            <div>                         
+                                                                <p>{{ view.comment }}</p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="font-xs mr-30"> {{ view.created_at }} </p>
+                                                                        <a href="{{ view.get_detail_url }}" class="text-brand">Reply <i class="fa fa-arrow-right font-xs"></i> </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4 class="mb-30">Customer reviews</h4>
+                                                <div class="d-flex mb-30">
+                                                    <div class="product-rate d-inline-block mr-15">
+                                                        <div class="product-rating" style="width:90%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% for view in reviewes %}
+                                                <div class="progress mb-30">
+                                                    <span>{{ view.rate }}</span>
+                                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">{{ view.stars_percent }}</div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-60">
+                                <div class="col-12">
+                                    <h3 class="section-title style-1 mb-30">Related products</h3>
+                                </div>
+                                <div class="row">
+                                    {% for product in related_products %}
+                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap small hover-up">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{{ product.get_detail_url }}" tabindex="0">
+                                                        <img class="default-img" src="{{ product.default_img.image_url }}" alt="">
+                                                        <img class="hover-img" src="{{ product.hover_img.image_url }}" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="{% url 'wishlist-all' %}" tabindex="0"><i class="far fa-heart"></i></a>
+                                                    <a aria-label="Compare" class="action-btn small hover-up" href="{{ product.get_url }}" tabindex="0"><i class="far fa-exchange-alt"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    {% if product.status|lower != 'none' %}
+                                                    <span class="hot">{{ product.status }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <h2><a href="" tabindex="0">{{ product.name }}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    {% if product.percentage %}
+                                                    <span>{{ product.get_discount_price}}</span>
+                                                    <span class="old-price">{{ product.get_cheap_price.price }} so'm</span>
+                                                    {% else %}
+                                                    <span class="old-price">{{ product.get_cheap_price.price }} so'm</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
+                                <img class="border-radius-10" src="{% static 'assets/imgs/banner/apple.jpg' %}" alt="">
+                                <div class="banner-text">
+                                    <h4 class="mb-15 mt-40 text-white">Repair Services</h4>
+                                    <h2 class="fw-600 mb-20 text-white">We're an Apple <br>Authorised Service Provider</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+<script src="{% static 'assets/js/plugins/jquery.theia.sticky.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.elevatezoom.js' %}"></script>
+<script src="{% static 'assets/js/shop.js' %}"></script>
+
+{% endblock extra_js %}

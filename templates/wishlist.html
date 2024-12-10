@@ -1,0 +1,57 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Wishlist
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table shopping-summery text-center">
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col" colspan="2">Product</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in wishlists %}
+                                    <tr>
+                                        <td class="image product-thumbnail"><img src="{{ item.product.default_img.image.url }}" alt="#"></td>
+                                        <td class="product-des product-name">
+                                            <p class="product-name"><a href="{% url 'shop' %}">{{ item.product.name }}</a></p>
+                                            <p class="font-xs">{{ item.product.description }}
+                                            </p>
+                                        </td>
+                                        <td class="price" data-title="Price"><span>{{ item.product.get_cheap_price }}</span></td>
+                                        <td class="action" data-title="Remove">
+                                            <form method="post" action="{% url 'delete' item.pk %}">
+                                                {% csrf_token %}
+                                                <button  type="submit">
+                                                    <i class="fa fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

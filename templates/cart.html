@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Your Cart
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table shopping-summery text-center clean">
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in orderitems %}
+                                    <tr>
+                                        <td class="image product-thumbnail"><img src="{{ item.product_size.product.default_img.image.url }}" alt=""></td>
+                                        <td class="product-des product-name">
+                                            <p class="product-name"><a href="{% url 'shop' %}">{{ item.product_size.product.name }}</a></p>
+                                            <p class="font-xs">{{ item.product_size.product.description }}<br>
+                                            </p>
+                                        </td>
+                                        <td class="price" data-title="Price"><span>{{ item.product_size.price }}</span></td>
+                                        <td class="text-center" data-title="Stock">
+                                            <div class="m-auto">
+                                                <p>{{ item.quantity }}</p>
+                                            </div>
+                                        </td>
+                                        <td class="text-right" data-title="Cart">
+                                            <span>{{ item.get_total_price }}</span>
+                                        </td>
+                                        <td class="action" data-title="Remove">
+                                            <form method="post" action="{% url 'order-delete' item.pk %}">
+                                                {% csrf_token %}
+                                                <button  type="submit">
+                                                    <i class="fa fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="6" class="text-end">
+                                            <form method="post" action="{% url 'clear' order.pk %}">
+                                                {% csrf_token %}
+                                                <button  type="submit">Clear
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

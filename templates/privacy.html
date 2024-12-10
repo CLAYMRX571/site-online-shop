@@ -1,0 +1,69 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Pages
+                    <span></span> Privacy
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="single-page">
+                            <div class="single-header style-2">
+                                <h2>Privacy</h2>
+                                <div class="entry-meta meta-1 font-xs mt-15 mb-15">
+                                    <span class="post-by">By Clay</span>
+                                    <span class="post-on has-dot">12/11/2024</span>
+                                </div>
+                            </div>
+                            <div class="single-content">
+                                <h4>Welcome to Online Shop Privacy </h4>
+                                <ol start="1">
+                                    <li>Hi there, we're Online Shop (“<strong>Online Shop</strong>”) and welcome to our privacy which also applies to our Apple Companies. This policy sets out how we handle your personal information if you’re an Online Shop user or visitor to our Sites. It applies across Online Shop Market.</li>
+                                    <li>If we say we're talking about this privacy. If we say 'user terms' we're talking about the rules for using each of the Sites. The rules vary by product and each product makes them separately available and seeks consent to them separately to this privacy.</li>
+                                </ol>
+                                <h4>The type of personal information we collect</h4>
+                                <ol start="1">
+                                    <li>We collect certain personal information about visitors and users of our Sites.</li>
+                                    <li>The most common types of information we collect include things like: user-names, email addresses, payment information such as payment, support queries, forum comments (if applicable), content you direct us to make available on our Sites (such as item descriptions), your actions on our Sites (including any selections or inputs into items) and web and email analytics data. We will also collect personal information from job applications (such as, your CV, the application form itself, cover letter and interview notes).</li>
+                                </ol>
+                                <h4>How we collect personal information</h4>
+                                <ol start="1">
+                                    <li>We collect personal information directly when you provide it to us, automatically as you navigate through the Sites, or through other people when you use services associated with the Sites.</li>
+                                    <li>We collect your personal information when you provide it to us when you complete member registration and buy or provide items or services on our Sites, subscribe to a newsletter, email list, submit feedback, enter a contest, fill out a survey, or send us a communication.</li>
+                                    <li>As the operator of digital content marketplaces, we have a legitimate interest in verifying the identity of our authors. We believe that knowing who our authors are will strengthen the integrity of our marketplaces by reducing fraud, making authors more accountable for their content and giving Online Shop and customers the ability to enforce contracts for authors who break the rules. Online Shop also has certain legal obligations that require us to know who our authors are in certain circumstances. In light of this, if you are an author we will verify your identity, in particular, your name. The verification procedure is called Online Shop Verify. </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-area pl-30">
+                            <!--Widget categories-->
+                            <div class="sidebar-widget widget_categories mb-50">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title">Categories</h5>
+                                </div>
+                                <div class="post-block-list post-module-1 post-module-5">
+                                    <ul>
+                                        {% for ctg in categories %}
+                                        <li class="cat-item cat-item-2"><a href="blog-category-list.html">{{ ctg.name }}</a> {{ ctg.products.count }} </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

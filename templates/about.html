@@ -1,0 +1,33 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main single-page">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Pages
+                    <span></span> About us
+                </div>
+            </div>
+        </div>
+        <section id="home" class="hero-2 position-relative paralax-area">
+            <div class="hero-content">
+                <div class="container">
+                    <div class="text-center">
+                        <h4 class="text-brand mb-20">About Us</h4>
+                        <h1 class="mb-30 wow fadeIn animated font-xxl fw-900">
+                            Online Shop delivery product the best and product is the sells
+                        </h1>
+                        <p class="w-50 m-auto mb-50 wow fadeIn animated">Online Shop delivery product the best and product is the sells</p>
+                        <p class="wow fadeIn animated">
+                            <a class="btn btn-brand btn-lg font-weight-bold text-white border-radius-5 btn-shadow-brand hover-up" href="{% url 'contact' %}">Contact Us</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

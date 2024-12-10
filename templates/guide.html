@@ -1,0 +1,74 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Pages
+                    <span></span> Purchase Guide
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container custom">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="single-page">
+                            <div class="single-header style-2">
+                                <h2>Purchase Guide</h2>
+                                <div class="entry-meta meta-1 font-xs mt-15 mb-15">
+                                    <span class="post-by">By Clay</span>
+                                    <span class="post-on has-dot">12/11/2024</span>
+                                </div>
+                            </div>
+                            <figure class="single-thumbnail">
+                                <img src="{% static 'assets/imgs/page/shop.png' %}" alt="">
+                            </figure>
+                            <div class="single-content">
+                                <h4>1. Account Registering</h4>
+                                <ul class="mb-30">
+                                    <li>First Name</li>
+                                    <li>Last Name</li>
+                                    <li>Phone numbers</li>
+                                    <li>Email address</li>
+                                    <li>Password</li>
+                                </ul>
+                                <h4>2. Select Product</h4>
+                                <p> Choose the product you like and enter the quantity </p>
+                                <h4>3. Confirm Order Content</h4>
+                                <p> Place an order and check that you have selected the correct product and place the order and we will receive it </p>
+                                <h4>4. Transaction Completed</h4>
+                                <p> The process is complete and your order has gone </p>
+                                <h4>5. Accepted Credit Cards</h4>
+                                <ul>
+                                    <li>Uzcard</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-area pl-30">
+                            <!--Widget categories-->
+                            <div class="sidebar-widget widget_categories mb-50">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title">Categories</h5>
+                                </div>
+                                <div class="post-block-list post-module-1 post-module-5">
+                                    <ul>
+                                        {% for ctg in categories %}
+                                        <li class="cat-item cat-item-2"><a href="{% url 'blog' %}">{{ ctg.name }}</a> {{ ctg.products.count }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

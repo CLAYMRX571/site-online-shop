@@ -1,0 +1,123 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Blog
+                    <span></span> Mobile
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container custom">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="single-page">
+                            <div class="single-header style-2">
+                                <h1 class="mb-30">Smart watch 2024</h1>
+                                <div class="single-header-meta">
+                                    <div class="entry-meta meta-1 font-xs mt-15 mb-15">
+                                        <span class="post-by">By Clay</span>
+                                        <span class="post-on has-dot">12/11/2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <figure class="single-thumbnail">
+                                <img src="{% static 'assets/imgs/blog/watch.jpg' %}" alt="">
+                            </figure>
+                            <div class="single-content">
+                                <p>The best smartwatch needs to be able to monitor your health, track your location when exercising, offer a variety of other apps that you wouldn't normally see on your smartphone, sport good battery life and, perhaps most importantly, have an affordable price.</p>
+                                <p>We've reviewed and ranked all of the best smartwatches on the market right now, and we've made a definitive list of the top 5 devices you can buy today. One of the 5 picks below may just be your perfect next smartwatch.</p>
+                                <p>Those top-end wearables span from the Apple Watch to Fitbits, Garmin watches to Tizen-sporting Samsung watches. There's also Wear OS which is Google's own wearable operating system in the vein of Apple's watchOS - you'll see it show up in a lot of these devices.</p>
+                                <p>Throughout our review process, we look at the design, features, battery life, spec, price and more for each smartwatch, rank it against the competition and enter it into the list you'll find below.</p>
+                                <h4>1. Apple Watch SE</h4>
+                                <ul class="mb-20">
+                                    <li>Updated content on a regular basis</li>
+                                    <li>Secure &amp; hassle-free payment</li>
+                                    <li>1-click checkout</li>
+                                    <li>Easy access &amp; smart user dashboard</li>
+                                </ul>
+                                <h4>2. Samsung Galaxy Watch 3</h4>
+                                <table class="font-md">
+                                    <tbody>
+                                        <tr class="made">
+                                            <th>Made</th>
+                                            <td>
+                                                <p>Korean</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="size">
+                                            <th>Size</th>
+                                            <td>
+                                                <p>32L x 18W</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="price">
+                                            <th>Price</th>
+                                            <td>
+                                                <p>24$</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="frame">
+                                            <th>Frame</th>
+                                            <td>
+                                                <p>Aluminum</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="weight-wo-wheels">
+                                            <th>Color</th>
+                                            <td>
+                                                <p>Black</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h4>3. Repair Services</h4>
+                                <div class="banner-img banner-big wow fadeIn f-none mb-30 animated">
+                                    <img class="border-radius-10" src="{% static 'assets/imgs/banner/apple.jpg' %}" alt="">
+                                    <div class="banner-text">
+                                        <h6 class="mb-15 mt-40 text-white">Repair Services</h6>
+                                        <h5 class="fw-600 mb-20 text-white">We're an Apple <br>Authorised Service Provider</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                        <div class="widget-area">
+                            <!--Widget categories-->
+                            <div class="sidebar-widget widget_categories mb-50">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title">Categories</h5>
+                                </div>
+                                <div class="post-block-list post-module-1 post-module-5">
+                                    <ul>
+                                        {% for ctg in categories %}
+                                        <li class="cat-item cat-item-2"><a href="/shop?category={{ctg.id}}">{{ ctg.name }}</a> {{ ctg.products.count }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Widget Tags-->
+                            <div class="sidebar-widget widget_tags mb-50">
+                                <div class="widget-header position-relative mb-20 pb-10">
+                                    <h5 class="widget-title">Popular tags</h5>
+                                </div>
+                                {% for tags in tag %}
+                                <div class="tagcloud">
+                                    <a class="tag-cloud-link" href="{% url 'blog' %}">{{ tags.name }}</a>,
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

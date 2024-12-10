@@ -1,0 +1,7 @@
+Django~=5.0.0
+environs~=11.0.0
+pillow~=10.4.0
+django-debug-toolbar~=4.4.6
+django-modeltranslation~=0.19.11
+django-jazzmin~=3.0.1
+django-countries~=7.6.1

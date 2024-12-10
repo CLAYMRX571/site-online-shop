@@ -1,0 +1,166 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow">Home</a>
+                    <span></span> Shop
+                    <span></span> Filters
+                </div>
+            </div>
+        </div>
+        <section class="mt-60 mb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a class="shop-filter-toogle" href="#">
+                            <span class="fal fa-filter"></span>
+                            Filters
+                            <i class="far fa-angle-down angle-down"></i>
+                            <i class="far fa-angle-up angle-up"></i>
+                        </a>
+                        <div class="shop-product-fillter-header">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
+                                    <h5 class="mb-20">Categories</h5>
+                                    <ul class="categor-list">
+                                        {% for ctg in categories %}
+                                        <li class="cat-item text-muted"><a href="/shop?category={{ctg.id}}">{{ ctg.name }}</a>{{ ctg.products.count }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
+                                    <h5 class="mb-20">Color</h5>
+                                    <ul class="list-filter color-filter">
+                                        {% for color in product.get_colors %}
+                                        <li {% if color.color__id == active_color.id %} class="active" {% endif %}>
+                                            {% csrf_token %}
+                                            <a href="{% url 'detail' slug=product.slug size=active_size.id color=color.color__id %}">
+                                                <span class="product-color" style="background-color: {{ color.color__code }};"></span>
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5 class="mb-15 mt-20">Size</h5>
+                                    <ul class="list-filter size-filter font-small">
+                                        {% for size in product.get_sizes %}
+                                        <li {% if size.size__id == active_size.size.id %} class="active" {% endif %}><a href="">{{ size.size__name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
+                                    <h5 class="mb-20">Review</h5>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:100%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25)</span>
+                                    </div>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:80%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25)</span>
+                                    </div>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:60%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25)</span>
+                                    </div>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:40%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25)</span>
+                                    </div>
+                                    <div class="product-rate-cover">
+                                        <div class="product-rate d-inline-block">
+                                            <div class="product-rating" style="width:20%">
+                                            </div>
+                                        </div>
+                                        <span class="font-small ml-5 text-muted"> (25)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="shop-product-fillter">
+                            <div class="totall-product">
+                                <p> We found <strong class="text-brand">{{ page_obj.paginator.count }}</strong> items for you!</p>
+                            </div>
+                        </div>
+                        <div class="row product-grid-3">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{% url 'shop' %}">
+                                                <img class="default-img" src="{{ product.default_img.image.url  }}" alt="">
+                                                <img class="hover-img" src="{{ product.hover_img.image.url  }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'wishlist-all' %}"><i class="far fa-heart"></i></a>
+                                            <a aria-label="Compare" class="action-btn hover-up" href="{{ product.get_url }}"><i class="far fa-exchange-alt"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            {% if product.status|lower != 'none' %}
+                                            <span class="hot">{{ product.status }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="product-content-wrap">
+                                        <div class="product-category">
+                                            <a href="{% url 'shop' %}">{{ product.get_last_ctg.name }}</a>
+                                        </div>
+                                        <h2><a href="{{ product.get_detail_url }}">{{ product.name }}</a></h2>
+                                        <div class="rating-result" title="90%">
+                                            <span>
+                                                <span>90%</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-price">
+                                            {% if product.percentage %}
+                                            <span>{{ product.get_discaunt_price }} so'm</span>
+                                            <span class="old-price">{{ product.get_cheap_price.price }} so'm</span>
+                                            {% else %}
+                                            <span>{{ product.get_cheap_price.price }} so'm</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="{% url 'order' %}"><i class="far fa-shopping-bag"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--pagination-->
+                        <div class="pagination-area mt-15 mb-md-5 mb-lg-0">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-start">
+                                    {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?category={{ active_category.id }}&page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                    {% endif %}
+                                    <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
+                                    {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?category={{ active_category.id }}&page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+   
+{% endblock content %}
