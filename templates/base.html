@@ -160,7 +160,7 @@
                                                             <ul>
                                                                 <li><span class="submenu-title">{{ sub_ctg.name }}</span></li>
                                                                 {% for sub_sub_ctg in sub_ctg.get_children %}
-                                                                    <li><a class="dropdown-item nav-link nav_item" href="">{{ sub_sub_ctg.name }}</a></li>
+                                                                    <li><a class="dropdown-item nav-link nav_item" href="{% url 'shop' %}">{{ sub_sub_ctg.name }}</a></li>
                                                                 {% endfor %}
                                                             </ul>
                                                         </li>
