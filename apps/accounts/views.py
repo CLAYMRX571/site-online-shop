@@ -83,7 +83,8 @@ class PasswordResetView(View):
     form_class = PasswordResetForm
     
     def get(self, request):
-        return render(request, 'accounts/password_reset_form.html')
+        form = self.form_class()
+        return render(request, 'accounts/password_reset_form.html', {'form': form})
     
     def post(self, request):
         email_form = self.form_class(data=request.POST)
@@ -101,8 +102,8 @@ class PasswordResetView(View):
                    
 class CheckVeryfyCodeView(View):
     def get(self, request, uuid):
-        code = PasswordResetCode.objects.filter(Q(uuid=uuid) & Q(is_confirmed=False) & Q(expired_time__gte=datetime.now()))
-        if code.exists():
+        code = PasswordResetCode.objects.filter(Q(uuid=uuid) & Q(is_confirmed=False) & Q(expired_time__gte=datetime.now())).first()
+        if code:
             return render(request, 'accounts/password_reset_check_verify_code.html')
         
         messages.error(request, "Kod kiritish muddati o'tgan!!!")
@@ -110,9 +111,8 @@ class CheckVeryfyCodeView(View):
     
     def post(self, request, uuid):
         user_code = request.POST.get('code')
-        code = PasswordResetCode.objects.filter(Q(uuid=uuid) & Q(is_confirmed=False) & Q(expired_time__gte=datetime.now()))
-        if code.exists():
-            code = code.first()
+        code = PasswordResetCode.objects.filter(Q(uuid=uuid) & Q(is_confirmed=False) & Q(expired_time__gte=datetime.now())).first()
+        if code:
             if user_code == code.code:
                 code.is_confirmed = True
                 code.save()
